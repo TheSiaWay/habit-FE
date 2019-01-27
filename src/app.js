@@ -2,10 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import HabitList from './habitList/index';
+import Nav from './nav/index';
+
 import './app.css';
 
-const Index = () => {
-  return <div className="test">Hello React!</div>
+const App = () => {
+  return <div>
+    <Nav />
+    <HabitList />
+  </div>
 };
 
-ReactDOM.render(<HabitList />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
