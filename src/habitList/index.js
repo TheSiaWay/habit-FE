@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { WeeklyHabitDisplay } from './../weeklyHabitDisplay/index';
-import { format, startOfWeek, addDays } from 'date-fns';
+import { format, startOfWeek, addDays, subDays } from 'date-fns';
 
 // stubbed data
 const habits = [
@@ -40,7 +40,8 @@ export default class HabitList extends Component {
     super(props);
     this.state = {
       habits,
-      weekInRange: this.buildWeek('01/15/19')
+      weekInRange: this.buildWeek('01/15/19'),
+      daysInWeek: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
     }
   }
 
@@ -58,15 +59,43 @@ export default class HabitList extends Component {
     return dates;
   }
 
+  toggleWeek(day, isPrevWeek) {
+    let newDate;
+    if (isPrevWeek) {
+      newDate = subDays(new Date(day), 1);
+    } else {
+      newDate = addDays(new Date(day), 1);
+    }
+    const weekInRange = this.buildWeek(newDate);
+    this.setState({
+      weekInRange
+    });
+  }
+
   render() {
-    const {habits, weekInRange} = this.state;
+    const { habits, weekInRange, daysInWeek } = this.state;
     return (
       <table>
         <thead>
           <tr>
+            <th colSpan="8">
+              <span
+                onClick={() => this.toggleWeek(weekInRange[0], true)}>
+                Prev
+            </span>
+              <span
+                onClick={() => this.toggleWeek(weekInRange[6], false)}>
+                Next
+            </span>
+            </th>
+          </tr>
+          <tr>
             <th></th>
-            {weekInRange.map((day) => (
-              <th key={day}>{day}</th>
+            {weekInRange.map((day, idx) => (
+              <th key={day}>
+                <span>{daysInWeek[idx]}</span> <br/>
+                <span>{day.substring(0, day.length - 3)}</span>
+              </th>
             ))}
           </tr>
         </thead>
