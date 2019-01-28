@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { WeeklyHabitDisplay } from './../weeklyHabitDisplay/index';
 import { format, startOfWeek, addDays, subDays } from 'date-fns';
 import { curWeek } from './../stubbedData/statsData';
-
+import './index.css';
 export default class HabitList extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +23,6 @@ export default class HabitList extends Component {
       increment++;
       dates.push(format(newDate, 'M/D/YY'));
     }
-    console.log(dates);
     return dates;
   }
 
@@ -43,10 +42,10 @@ export default class HabitList extends Component {
   render() {
     const { habits, weekInRange, daysInWeek } = this.state;
     return (
-      <table>
+      <table className="stats-table">
         <thead>
-          <tr>
-            <th colSpan="8">
+          <tr className="toggler">
+            <th colSpan="9">
               <span
                 onClick={() => this.toggleWeek(weekInRange[0], true)}>
                 Prev
@@ -57,12 +56,12 @@ export default class HabitList extends Component {
             </span>
             </th>
           </tr>
-          <tr>
+          <tr className="date-info">
             <th></th>
             {weekInRange.map((day, idx) => (
               <th key={day}>
-                <span>{daysInWeek[idx]}</span> <br/>
-                <span>{day.substring(0, day.length - 3)}</span>
+                <span className="week">{daysInWeek[idx]}</span> <br/>
+                <span className="day">{day.substring(0, day.length - 3)}</span>
               </th>
             ))}
           </tr>
