@@ -26,7 +26,6 @@ class Nav extends Component {
   }
 
   setUser(e) {
-    e.preventDefault();
     this.setState((prevState) => {
       return {
         user: {
@@ -82,8 +81,6 @@ class Nav extends Component {
           closeModal={() => this.closeModal()}
           signIn={(e) => this.setUser(e)}
         />
-
-
       </ul>
     </nav>
   }

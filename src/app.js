@@ -1,16 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-
+import { BrowserRouter, Route } from "react-router-dom";
+import Welcome from './welcome/index';
+import LoginForm from './loginForm/index';
 import HabitList from './habitList/index';
-import Nav from './nav/index';
-import { Welcome } from './welcome/index';
 
 import './app.css';
-
-const App = () => {
-  return <div>
-    <Welcome />
-  </div>
-};
+const App = () => (
+  <BrowserRouter>
+    <div>
+      <Route exact path="/" component={Welcome}></Route>
+      <Route path="/test" component={HabitList}></Route>
+    </div>
+  </BrowserRouter>
+)
 
 ReactDOM.render(<App />, document.getElementById('app'));

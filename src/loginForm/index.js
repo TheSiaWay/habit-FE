@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
+import { Link } from "react-router-dom";
+
 
 Modal.setAppElement('#app');
 
@@ -30,7 +32,11 @@ const LoginForm = ({signIn, isModalOpen, closeModal, input, setInput, type }) =>
               onChange={setInput}
               value={input}/>
             <input type="password" placeholder="Enter your password" />
-            <button onClick={signIn}>{type}</button>
+            <Link to="/test">
+              <button onClick={signIn}>
+                {type}
+              </button>
+            </Link>
             <button onClick={closeModal}>Cancel</button>
           </form>
         </Modal>
