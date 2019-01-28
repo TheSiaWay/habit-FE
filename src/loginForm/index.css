@@ -6,9 +6,9 @@
 }
 
 .modal--input {
-  border: 2px solid #ddd;
+  border: 1.5px solid #ddd;
   border-radius: .7em;
-  padding: 1em 2em;
+  padding: .7em 2em;
   font-size: 18px;
   display: block;
   margin-bottom: 1em;

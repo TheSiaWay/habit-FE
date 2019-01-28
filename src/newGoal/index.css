@@ -1,0 +1,95 @@
+.goal--M {
+  font-family: sans-serif;
+  text-align: center;
+  max-width: 450px;
+}
+
+.goal--M__header {
+  background: #1d5faf;
+  color: white;
+  margin: -20px;
+  margin-bottom: 1em;
+  padding: .8em;
+}
+
+.goal--M__header h1 {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.goal--M__header span {
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.goal--M__text {
+  color: #1d5faf;
+  font-weight: 500;
+  font-size: 18px;
+  margin: .5em auto;
+}
+
+.goal--M__input {
+  border: 1.5px solid #ddd;
+  border-radius: .7em;
+  padding: .7em 2em;
+  font-size: 18px;
+  margin-bottom: 1em;
+  min-width: 250px;
+}
+
+.goal--M__text-gray {
+  color: #bbb;
+  margin-bottom: 1em;
+}
+
+.goal--M__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.goal--M__list li {
+  border: 1px solid #ddd;
+  padding: .5em;
+  margin: .5em;
+  border-radius: .6em;
+}
+
+.goal--M__list li:hover {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.goal--M__footer {
+  background: #f9f9f9;
+  margin: -20px;
+  margin-top: 1em;
+  padding: .5em;
+  display: flex;
+  padding-right: calc(.5em + 20px);
+  justify-content: flex-end;
+}
+
+.goal--M__footer button:hover {
+  cursor: pointer;
+}
+
+.goal--M__footer button {
+  border: 1px solid #bbb;
+  border-radius: 1em;
+  font-weight: 600;
+  padding: .5em 1em;
+  font-size: 15px;
+}
+
+.goal--M__button-next {
+  margin-left: 1em;
+  background: #3079d3;
+  color: white;
+  border: none !important;
+}
