@@ -1,45 +1,13 @@
 import React, { Component } from 'react';
 import { WeeklyHabitDisplay } from './../weeklyHabitDisplay/index';
 import { format, startOfWeek, addDays, subDays } from 'date-fns';
-
-// stubbed data
-const habits = [
-  {
-    id: 1,
-    name: 'Wake up early',
-    checked: ['1/13/19', '1/14/19', '1/18/19']
-    // sun, mon, fri
-  },
-  {
-    id: 2,
-    name: 'Cook lunch',
-    checked: ['1/15/19', '1/16/19', '1/19/19']
-    // tues, wed, sat
-  },
-  {
-    id: 3,
-    name: 'Journal',
-    checked: []
-  },
-  {
-    id: 4,
-    name: 'Track time',
-    checked: ['1/17/19']
-    // thurs
-  },
-  {
-    id: 5,
-    name: 'Meditate',
-    checked: ['1/17/19', '1/18/19']
-  }
-]
-
+import { curWeek } from './../stubbedData/statsData';
 
 export default class HabitList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      habits,
+      habits: curWeek,
       weekInRange: this.buildWeek('01/15/19'),
       daysInWeek: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
     }
