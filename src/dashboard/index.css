@@ -15,3 +15,7 @@
 .dashboard--goals {
   margin: 1em 2em;
 }
+
+.goal--done {
+  color: blue;
+}
