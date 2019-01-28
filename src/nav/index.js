@@ -5,8 +5,10 @@ import './index.css';
 class Nav extends Component {
   constructor(props) {
     super(props);
+    const user = props.user;
+    console.log(user);
     this.state = {
-      user: null,
+      user,
       input: '',
       isModalOpen: false,
       type: ''
@@ -17,6 +19,7 @@ class Nav extends Component {
     this.setState({
       user: null
     });
+    window.user = null;
   }
 
   closeModal() {
@@ -26,6 +29,7 @@ class Nav extends Component {
   }
 
   setUser() {
+    window.user = { name: this.state.input };
     this.setState((prevState) => {
       return {
         user: {
@@ -34,7 +38,7 @@ class Nav extends Component {
         isModalOpen: false,
         input: ''
       }
-    })
+    });
   }
 
   showLoginForm(type) {
@@ -77,7 +81,6 @@ class Nav extends Component {
           input={input}
           setInput={(e) => this.setInput(e)}
           isModalOpen={isModalOpen}
-          openModal={() => this.openModal()}
           closeModal={() => this.closeModal()}
           signIn={(e) => this.setUser(e)}
         />

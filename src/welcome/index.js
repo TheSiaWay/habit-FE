@@ -17,6 +17,7 @@ export default class Welcome extends Component {
     this.setState({
       user: null
     });
+    window.user = null;
   }
 
   closeModal() {
@@ -26,6 +27,7 @@ export default class Welcome extends Component {
   }
 
   setUser() {
+    window.user = { name: this.state.input };
     this.setState((prevState) => {
       return {
         user: {
@@ -70,7 +72,6 @@ export default class Welcome extends Component {
         input={input}
         setInput={(e) => this.setInput(e)}
         isModalOpen={isModalOpen}
-        openModal={() => this.openModal()}
         closeModal={() => this.closeModal()}
         signIn={(e) => this.setUser(e)}
       />

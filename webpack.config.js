@@ -10,7 +10,11 @@ module.exports = {
   entry: './src/app.js',
   output: {
     path: path.resolve('dist'),
-    filename: 'bundled.js'
+    filename: 'bundled.js',
+    publicPath: '/'
+  },
+  devServer: {
+    historyApiFallback: true
   },
   module: {
     rules: [
