@@ -6,13 +6,20 @@ export default class GoalNav extends Component {
     super();
     this.state = {
       isModalOpen: false,
-      input: ''
+      goal: '',
+      displayStepTwo: false,
+      gpWeek: '',
+      startDate: ''
     }
   }
 
   closeModal() {
     this.setState({
-      isModalOpen: false
+      isModalOpen: false,
+      goal: '',
+      displayStepTwo: false,
+      gpWeek: '',
+      startDate: ''
     })
   }
 
@@ -22,8 +29,37 @@ export default class GoalNav extends Component {
     })
   }
 
+  handleInput(e) {
+    const { type } = e.target.dataset;
+    const val = e.target.value;
+    this.setState({
+      [type]: val
+    })
+  }
+
+  handleNext() {
+    if (this.state.goal.length) {
+      this.setState({
+        displayStepTwo: true
+      })
+    }
+  }
+
+  handlePrev() {
+    this.setState({
+      displayStepTwo: false
+    })
+  }
+
+  handleGoalPick(e) {
+    const value = e.target.innerText;
+    this.setState({
+      goal: value
+    }, () => this.handleNext());
+  }
+
   render() {
-    const { isModalOpen } = this.state;
+    const { isModalOpen, goal, displayStepTwo, gpWeek, startDate } = this.state;
     return (
       <div>
         <h2>
@@ -33,7 +69,15 @@ export default class GoalNav extends Component {
 
         <NewGoal
           isModalOpen={isModalOpen}
+          goal={goal}
+          gpWeek={gpWeek}
+          startDate={startDate}
+          displayStepTwo={displayStepTwo}
           closeModal={() => this.closeModal()}
+          handleInput={(e) => this.handleInput(e)}
+          handleNext={() => this.handleNext()}
+          handlePrev={() => this.handlePrev()}
+          handleGoalPick={(e) => this.handleGoalPick(e)}
         />
       </div>
     )

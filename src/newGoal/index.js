@@ -3,7 +3,9 @@ import Modal from 'react-modal';
 import './index.css';
 import { customStyles } from '../utils/modalStyle';
 
-const NewGoal = ({isModalOpen, closeModal, input }) => {
+const NewGoal = ({
+  isModalOpen, goal, displayStepTwo, gpWeek, startDate,
+  closeModal, handleInput, handleGoalPick, handleNext, handlePrev }) => {
   const goalList = [
     'Exercise',
     'Weight',
@@ -24,40 +26,67 @@ const NewGoal = ({isModalOpen, closeModal, input }) => {
       onRequestClose={() => closeModal()}
       style={customStyles}
     >
-      <div className="goal--M">
+      <div className={displayStepTwo ? 'hide' : 'goal--M' }>
         <header className="goal--M__header">
           <h1>New Habit Tracker</h1>
           <span>Step 1 of 2</span>
         </header>
         <p className="goal--M__text">What do you want to track?</p>
         <input type="text"
+          data-type="goal"
+          value={goal}
+          onChange={handleInput}
           placeholder="Weight, Budget, Reading..."
           className="goal--M__input"/>
         <p className="goal--M__text-gray">Track anything you want by entering its name above, or choose a habit from below:</p>
         <ul className="goal--M__list">
           {goalList.map((goal, idx) => (
-            <li key={idx}>{goal}</li>
+            <li key={idx}
+              onClick={handleGoalPick}>{goal}</li>
           ))}
         </ul>
         <footer className="goal--M__footer">
           <button
-            className="goal--M__button-close">Close</button>
+            className="goal--M__button-close"
+            onClick={closeModal}>Close</button>
           <button
-            className="goal--M__button-next">Next</button>
+            className="goal--M__button-primary"
+            onClick={handleNext}>Next</button>
         </footer>
       </div>
 
-      <div className="hide">
-        <header>Finish
+      <div className={displayStepTwo ? 'goal--M' : 'hide'}>
+        <header className="goal--M__header">
+          <h1>Finish</h1>
           <span>Step 2 of 2</span>
         </header>
-        <input type="text" value={input} />
-        <input type="number" placeholder="Goal per Week" />
-        <input type="date" placeholder="Start Date" />
-        <footer>
-          <button>Previous</button>
-          <button>Close</button>
-          <button>Save</button>
+        <input
+          className="goal--M__input"
+          type="text" value={goal} disabled/>
+        <input
+          className="goal--M__input"
+          data-type="gpWeek"
+          type="number" placeholder="Goal per Week"
+          value={gpWeek}
+          onChange={handleInput} />
+        <input
+          className="goal--M__input"
+          data-type="startDate"
+          type="date" placeholder="Start Date"
+          value={startDate}
+          onChange={handleInput} />
+        <footer className="goal--M__footer goal--M__flex">
+          <button
+            className="goal--M__button-back"
+            onClick={handlePrev}>Previous</button>
+          <div>
+            <button
+              className="goal--M__button-close"
+              onClick={closeModal}>Close</button>
+            <button
+              className="goal--M__button-primary"
+            >Save</button>
+          </div>
         </footer>
       </div>
     </Modal>

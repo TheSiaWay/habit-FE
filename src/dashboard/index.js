@@ -14,16 +14,17 @@ export default class Dashboard extends Component {
 
   closeModal() {
     this.setState({
-      isMOdalOpen: false
+      isModalOpen: false
     })
   }
 
   render() {
-    const { user, isMOdalOpen } = this.state;
+    const { user, isModalOpen } = this.state;
     return (
       <div>
         <Nav user={user}/>
-        <GoalNav />
+        <GoalNav
+        />
         Dashboard content
       </div>
     )
