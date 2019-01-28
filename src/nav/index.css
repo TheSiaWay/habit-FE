@@ -1,0 +1,18 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+}
+
+.nav--item {
+  margin-left: 1em;
+}
+
+.nav--item:hover {
+  cursor: pointer;
+}
+
+.nav--list {
+  display: flex;
+}

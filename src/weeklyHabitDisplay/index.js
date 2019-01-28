@@ -10,6 +10,7 @@ export const WeeklyHabitDisplay = ({ habits, weekInRange }) => (
             <td key={`${id}${day}`}>X</td> :
             <td key={`${id}${day}`}>Y</td>
         ))}
+        <td>Edit</td>
       </tr>
     ))}
   </tbody>

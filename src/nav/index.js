@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 
 import LoginForm from './../loginForm/index';
+import './index.css';
 class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {
-        name: 'TestUserName'
-      },
+      user: null,
       input: '',
       isModalOpen: false,
       type: ''
@@ -57,18 +56,18 @@ class Nav extends Component {
     const { user, input, isModalOpen, type} = this.state;
     return <nav>
       <h1>Habits</h1>
-      <ul>
-        <li>New Habit</li>
-        <li
+      <ul className="nav--list">
+        <li className="nav--item">New Habit</li>
+        <li className="nav--item"
           onClick={() => this.showLoginForm('Sign In')}
         >{user ? user.name : 'Sign In'}</li>
        {
           user ?
-          <li
+          <li className="nav--item"
             onClick={() => this.signOut()}>
             Sign Out
           </li> :
-          <li
+          <li className="nav--item"
               onClick={() => this.showLoginForm('Sign Up')}>
             Sign Up
           </li>
