@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import LoginForm from './../loginForm/index';
 import './index.css';
@@ -59,8 +60,22 @@ class Nav extends Component {
   render() {
     const { user, input, isModalOpen, type} = this.state;
     return <nav>
-      <h1>Habits</h1>
+      <Link to="/">
+        <h1>Habits</h1>
+      </Link>
       <ul className="nav--list">
+        { user ?
+          <Link to="/dashboard">
+            <li className="nav--item">Dashboard</li>
+          </Link>
+          : ''
+        }
+        { user ?
+          <Link to="/weekly-stats">
+            <li className="nav--item">Weekly Stats</li>
+          </Link>
+          : ''
+        }
         <li className="nav--item"
           onClick={() => this.showLoginForm('Sign In')}
         >{user ? user.name : 'Sign In'}</li>

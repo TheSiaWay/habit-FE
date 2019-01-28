@@ -8,7 +8,7 @@ export default class HabitList extends Component {
     super(props);
     this.state = {
       habits: curWeek,
-      weekInRange: this.buildWeek('01/15/19'),
+      weekInRange: this.buildWeek(new Date()),
       daysInWeek: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
     }
   }

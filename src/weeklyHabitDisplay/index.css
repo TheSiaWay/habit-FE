@@ -1,0 +1,11 @@
+.missed {
+  color: #ddd;
+}
+
+.done {
+  color: green;
+}
+
+.habit-name {
+  font-weight: 800;
+}

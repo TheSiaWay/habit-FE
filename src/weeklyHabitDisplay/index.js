@@ -1,14 +1,15 @@
 import React from 'react';
+import './index.css';
 
 export const WeeklyHabitDisplay = ({ habits, weekInRange }) => (
   <tbody>
     {habits.map(({ id, name, checked }) => (
       <tr key={id}>
-        <td>{name}</td>
+        <td className="habit-name">{name}</td>
         {weekInRange.map((day) => (
           checked.indexOf(day) === -1 ?
-            <td key={`${id}${day}`}>X</td> :
-            <td key={`${id}${day}`}>Y</td>
+            <td className="missed" key={`${id}${day}`}>X</td> :
+            <td className="done" key={`${id}${day}`}>✅</td>
         ))}
         <td>Edit</td>
       </tr>
