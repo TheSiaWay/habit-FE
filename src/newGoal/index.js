@@ -5,7 +5,7 @@ import { customStyles } from '../utils/modalStyle';
 
 const NewGoal = ({
   isModalOpen, goal, displayStepTwo, gpWeek, startDate,
-  closeModal, handleInput, handleGoalPick, handleNext, handlePrev }) => {
+  closeModal, handleInput, handleGoalPick, handleNext, handlePrev, addGoal }) => {
   const goalList = [
     'Exercise',
     'Weight',
@@ -85,6 +85,7 @@ const NewGoal = ({
               onClick={closeModal}>Close</button>
             <button
               className="goal--M__button-primary"
+              onClick={addGoal}
             >Save</button>
           </div>
         </footer>

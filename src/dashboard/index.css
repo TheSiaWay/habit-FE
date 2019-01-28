@@ -1,0 +1,17 @@
+.dashboard nav {
+  color: white;
+  background: linear-gradient(#164987,#1d5faf);
+}
+
+.dashboard--header {
+  margin: 1em 2em;
+}
+
+.dashboard--header h1 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.dashboard--goals {
+  margin: 1em 2em;
+}

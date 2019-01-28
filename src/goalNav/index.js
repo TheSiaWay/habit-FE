@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import NewGoal from './../newGoal/index';
-
+import './index.css';
 export default class GoalNav extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isModalOpen: false,
       goal: '',
@@ -58,10 +58,18 @@ export default class GoalNav extends Component {
     }, () => this.handleNext());
   }
 
+  handleAddGoal() {
+    const {goal, gpWeek, startDate} = this.state;
+    if (gpWeek.length && startDate.length) {
+      this.props.addGoal({goal, gpWeek, startDate});
+      this.closeModal();
+    }
+  }
+
   render() {
     const { isModalOpen, goal, displayStepTwo, gpWeek, startDate } = this.state;
     return (
-      <div>
+      <div className="goals--nav">
         <h2>
           Daily Goals:
           <button onClick={() => this.openGoalModal()}>Add a New Habit</button>
@@ -78,6 +86,7 @@ export default class GoalNav extends Component {
           handleNext={() => this.handleNext()}
           handlePrev={() => this.handlePrev()}
           handleGoalPick={(e) => this.handleGoalPick(e)}
+          addGoal={() => this.handleAddGoal()}
         />
       </div>
     )
