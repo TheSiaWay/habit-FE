@@ -1,0 +1,48 @@
+.modal {
+  font-family: sans-serif;
+  text-align: center;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+.modal--input {
+  border: 2px solid #ddd;
+  border-radius: .7em;
+  padding: 1em 2em;
+  font-size: 18px;
+  display: block;
+  margin-bottom: 1em;
+  min-width: 250px;
+}
+
+.modal--header {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.modal--button {
+  display: block;
+  border: none;
+  border-radius: 1em;
+  padding: .5em 1em;
+  font-size: 18px;
+  margin: 1.5em 1em;
+  font-weight: 600;
+  margin: 1em auto;
+  padding: 1em 2em;
+  width: 100%;
+}
+
+.modal--button:hover {
+  cursor: pointer;
+}
+
+.modal--button__primary {
+  background: #17c267;
+  color: white;
+}
+
+.modal--button__secondary {
+  background: #eee;
+  color: gray;
+}

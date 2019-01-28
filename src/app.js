@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from "react-router-dom";
 import Welcome from './welcome/index';
-import LoginForm from './loginForm/index';
 import HabitList from './habitList/index';
 
 import './app.css';

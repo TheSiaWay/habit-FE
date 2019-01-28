@@ -25,7 +25,7 @@ class Nav extends Component {
     });
   }
 
-  setUser(e) {
+  setUser() {
     this.setState((prevState) => {
       return {
         user: {

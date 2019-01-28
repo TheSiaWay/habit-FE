@@ -25,7 +25,7 @@ export default class Welcome extends Component {
     });
   }
 
-  setUser(e) {
+  setUser() {
     this.setState((prevState) => {
       return {
         user: {
@@ -58,7 +58,7 @@ export default class Welcome extends Component {
         <Nav />
         <h1 className="welcome--header">Track all your Goals & Habits in one place.</h1>
         <p className="welcome--header__paragraph">Get organized and track anything you want to build the perfect routine. Stay motivated with helpful charts and achieve your goals.</p>
-        <button className="welcome--button"
+        <button className="welcome--button welcome--button__primary"
           onClick={() => this.showLoginForm('Sign Up')}>Sign Up for Free</button>
         <button className="welcome--button"
           onClick={() => this.showLoginForm('Sign In')}>Sign In</button>

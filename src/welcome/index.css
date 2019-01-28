@@ -30,3 +30,8 @@
 .welcome--button:hover {
   cursor: pointer;
 }
+
+.welcome--button__primary {
+  background: #17c267;
+  color: white;
+}
