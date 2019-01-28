@@ -20,6 +20,7 @@ class Nav extends Component {
       user: null
     });
     window.user = null;
+    window.location.href = '/';
   }
 
   closeModal() {
@@ -60,7 +61,6 @@ class Nav extends Component {
     return <nav>
       <h1>Habits</h1>
       <ul className="nav--list">
-        <li className="nav--item">New Habit</li>
         <li className="nav--item"
           onClick={() => this.showLoginForm('Sign In')}
         >{user ? user.name : 'Sign In'}</li>

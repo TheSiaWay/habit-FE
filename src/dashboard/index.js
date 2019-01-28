@@ -26,7 +26,7 @@ export default class Dashboard extends Component {
           goals: prevState.goals.map(g => {
             if (g.goal === goal.goal) {
               g.gpWeek = goal.gpWeek;
-              g.startDate = format(new Date(goal.startDate), 'MM/DD/YY');
+              g.startDate = goal.startDate;
             }
             return g;
           })
@@ -57,12 +57,12 @@ export default class Dashboard extends Component {
     })
   }
 
-  handleDone(goal) {
+  handleDone(goal, status = true) {
     this.setState((prevState) => {
       return {
         goals: prevState.goals.map(g => {
           if (g.goal === goal) {
-            g.done = true;
+            g.done = status;
           }
           return g;
         })
@@ -137,6 +137,9 @@ export default class Dashboard extends Component {
     const { user, goals, isModalOpen, gpWeek, goal, startDate, displayStepTwo } = this.state;
     const filteredList = this.getTodayGoals(goals);
     const doneCount = filteredList.filter(goal => goal.done).length;
+    if (!user) {
+      window.location.href = '/';
+    }
     return (
       <div className="dashboard">
         <Nav user={user}/>
@@ -152,33 +155,52 @@ export default class Dashboard extends Component {
           handleGoalPick={(e) => this.handleGoalPick(e)}
           handleNext={() => this.handleNext()}
           handlePrev={() => this.handlePrev()}
-          handleAddGoal={() => this.handleAddGoal()}
-          addGoal={(goal) => this.addGoal(goal)} />
+          handleAddGoal={() => this.handleAddGoal()} />
         <header className="dashboard--header">
             <h1>Today: </h1>
             <span>{doneCount} / {filteredList.length}</span>
         </header>
-        <table className="dashboard--goals">
-          <tbody>
-            {filteredList.map((goal, idx) => (
-              <tr key={idx}>
-                <td>
-                  <p className={goal.done ? "goal--done" : "goal"}>{goal.goal}</p>
-                  <span>{goal.gpWeek} per week</span>
-                </td>
-                <td>
-                  <button onClick={() => this.handleDone(goal.goal)}>Done</button>
-                </td>
-                <td>
-                  <button onClick={() => this.handleEdit(goal.goal)}>Edit</button>
-                </td>
-                <td>
-                  <button onClick={() => this.handleDelete(goal.goal)}>Delete</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        {
+          filteredList.length === 0 ?
+            <div className="zero-state">
+              <p>There's no habit added to track today. Please add a new habit using the "Add a New Habit" button at the top.</p>
+            </div>
+          :
+            <table className="dashboard--goals">
+              <tbody>
+                {filteredList.map((goal, idx) => (
+                  <tr key={idx}>
+                    <td className="goal--info">
+                      <p className={goal.done ? "goal goal--done" : "goal"}>{goal.goal}</p>
+                      <span>{goal.gpWeek} per week</span> <br />
+                      <span>Started since: {goal.startDate}</span>
+                    </td>
+                    <td className="btn">
+                      {goal.done ?
+                        <button
+                          className="dashboard--button"
+                          onClick={() => this.handleDone(goal.goal, false)}>Undone</button>
+                        :
+                        <button
+                          className="dashboard--button dashboard--button__primary"
+                          onClick={() => this.handleDone(goal.goal)}>Done</button>
+                      }
+                    </td>
+                    <td className="btn">
+                      <button
+                        className="dashboard--button"
+                        onClick={() => this.handleEdit(goal.goal)}>Edit</button>
+                    </td>
+                    <td className="btn">
+                      <button
+                        className="dashboard--button"
+                        onClick={() => this.handleDelete(goal.goal)}>Delete</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+        }
       </div>
     )
   }
